@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
+title: "Client Report - [US name history index]"
 subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+author: "[Cannon Roach]"
 format:
   html:
     self-contained: true
@@ -26,8 +26,8 @@ execute:
 ---
 
 ```{python}
-#| label: libraries
-#| include: false
+# | label: libraries
+# | include: false
 import pandas as pd
 import numpy as np
 import plotly.express as px
@@ -36,8 +36,7 @@ import plotly.express as px
 
 ## Elevator pitch
 
-_paste your elevator pitch here_
-_A SHORT (4-5 SENTENCES) PARAGRAPH THAT `DESCRIBES KEY INSIGHTS` TAKEN FROM METRICS IN THE PROJECT RESULTS THINK TOP OR MOST IMPORTANT RESULTS._
+_This project is a result of the query method in pandas. With the prompts provided, I have made graphs to visualize the data. Answering the questions, I have learned that names through time change in use based on fads/trends. The use of a name can go down and up in time._
 
 ```{python}
 #| label: project data
@@ -46,35 +45,20 @@ _A SHORT (4-5 SENTENCES) PARAGRAPH THAT `DESCRIBES KEY INSIGHTS` TAKEN FROM METR
 df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv")
 ```
 
-__Highlight the Questions and Tasks__
 
 ## QUESTION|TASK 1
 
-__COPY PASTE QUESTION|TASK 1 FROM THE PROJECT HERE__
+__How does your name at your birth year compare to its use historically?__
 
-_type your results and analysis here_
+_My Birthyear was about the halfway point of the peakvuse of the name Cannon._
 
 ```{python}
 #| label: Q1
 #| code-summary: Read and format data
 # Include and execute your code here
-
-
-```
-
-_include figures in chunks and discuss your findings in the figure._
-
-```{python}
-#| label: Q1 chart
-#| code-summary: plot example
-#| fig-cap: "My useless chart"
-#| fig-align: center
-# Include and execute your code here
-chart = px.bar(df.head(200),
-    x="name", 
-    y="AK"
-)
-chart.show()
+cannon = px.line(df.query('name == "Cannon"'), x="year", y="Total", title="Cannons naming history")
+cannon.add_annotation(x=2005, y=208, text="My Birthyear")
+cannon.show()
 ```
 
 
@@ -98,19 +82,21 @@ display(mydat)
 
 ## QUESTION|TASK 2
 
-__COPY PASTE QUESTION|TASK 2 FROM THE PROJECT HERE__
+__If you talked to someone named Brittany on the phone, what is your guess of his or her age? What ages would you not guess?__
 
-_type your results and analysis here_
+_I would guess the age of Brittany to be 33 because of the amount of people named Brittany in 1990. I would not guess 55-56 because of the 5 people named Brittany then._
 
 ```{python}
 #| label: Q2
 #| code-summary: Read and format data
 # Include and execute your code here
-
+brit = px.line(df.query('name == "Brittany"'), x="year", y="Total")
+brit.add_annotation(x=1990, y=32562, text="33 to 34")
+brit.add_annotation(x=1968, y=5, text="55 to 56")
+brit.show()
 
 ```
 
-_include figures in chunks and discuss your findings in the figure._
 
 ```{python}
 #| label: Q2 chart
@@ -146,31 +132,16 @@ display(mydat)
 
 ## QUESTION|TASK 3
 
-__COPY PASTE QUESTION|TASK 3 FROM THE PROJECT HERE__
+__Mary, Martha, Peter, and Paul are all Christian names. From 1920 - 2000, compare the name usage of each of the four names. What trends do you notice?__
 
-_type your results and analysis here_
+_from 1920-1968 Mary was the most common name of the four. But in 1968, Paul passed slightly, than they were close ever since.The use of Martha has been lowest since 1954_
 
 ```{python}
 #| label: Q3
 #| code-summary: Read and format data
 # Include and execute your code here
-
-
-```
-
-_include figures in chunks and discuss your findings in the figure._
-
-```{python}
-#| label: Q3 chart
-#| code-summary: plot example
-#| fig-cap: "My useless chart"
-#| fig-align: center
-# Include and execute your code here
-chart = px.bar(df.head(200),
-    x="name", 
-    y="AK"
-)
-chart.show()
+christian = px.line(df.query('(name == "Peter" or name == "Paul" or name == "Martha" or name == "Mary") and 1919 < year < 2001'), x="year", y="Total", color="name")
+christian.show()
 ```
 
 
@@ -188,5 +159,19 @@ mydat = df.head(1000)\
     .filter(["year", "AK","AR"])
 
 display(mydat)
+
+```
+## QUESTION|TASK 4
+
+__Think of a unique name from a famous movie. Plot the usage of that name and see how changes line up with the movie release. Does it look like the movie had an effect on usage?__
+
+_The graph below shoes the history of all people named Anakin. The first starwars movie came out in 1977. Before 1998 there was never someone named Anakin in the database. The star wars movies lead to people being named Anakin_
+
+```{python}
+#| label: Q4
+#| code-summary: Read and format data
+# Include and execute your code here
+starwars = px.line(df.query('name == "Anakin"'), x="year", y="Total")
+starwars.show()
 
 ```

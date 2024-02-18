@@ -91,9 +91,9 @@
   {
     "objectID": "Projects/project2.html",
     "href": "Projects/project2.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - [flight delay index]",
     "section": "",
-    "text": "paste your elevator pitch here A SHORT (4-5 SENTENCES) PARAGRAPH THAT DESCRIBES KEY INSIGHTS TAKEN FROM METRICS IN THE PROJECT RESULTS THINK TOP OR MOST IMPORTANT RESULTS.\n\n\nRead and format project data\n# Include and execute your code here\ndf = pd.read_csv(\"https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv\")\n\n\nHighlight the Questions and Tasks",
+    "text": "In my findings, I report that the Atlanta, GA: Hartsfield-Jackson Atlanta International Airport is the worst in terms of delay amount and time. The delay of a flight is caused by weather 20-51% of the time. This depends on climate of course. The best time to travel would be November in terms of delay chance. For the optimal flight to avoid delays, you would want to fly in November at the Washington, DC: Washington Dulles International Airport.\n\n\nRead and format project data\n# Include and execute your code here\ndf = pd.read_json(\"https://raw.githubusercontent.com/byuidatascience/data4missing/master/data-raw/flights_missing/flights_missing.json\")\n\n\nHighlight the Questions and Tasks",
     "crumbs": [
       "DS250 Projects",
       "Project 2"
@@ -102,9 +102,9 @@
   {
     "objectID": "Projects/project2.html#elevator-pitch",
     "href": "Projects/project2.html#elevator-pitch",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - [flight delay index]",
     "section": "",
-    "text": "paste your elevator pitch here A SHORT (4-5 SENTENCES) PARAGRAPH THAT DESCRIBES KEY INSIGHTS TAKEN FROM METRICS IN THE PROJECT RESULTS THINK TOP OR MOST IMPORTANT RESULTS.\n\n\nRead and format project data\n# Include and execute your code here\ndf = pd.read_csv(\"https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv\")\n\n\nHighlight the Questions and Tasks",
+    "text": "In my findings, I report that the Atlanta, GA: Hartsfield-Jackson Atlanta International Airport is the worst in terms of delay amount and time. The delay of a flight is caused by weather 20-51% of the time. This depends on climate of course. The best time to travel would be November in terms of delay chance. For the optimal flight to avoid delays, you would want to fly in November at the Washington, DC: Washington Dulles International Airport.\n\n\nRead and format project data\n# Include and execute your code here\ndf = pd.read_json(\"https://raw.githubusercontent.com/byuidatascience/data4missing/master/data-raw/flights_missing/flights_missing.json\")\n\n\nHighlight the Questions and Tasks",
     "crumbs": [
       "DS250 Projects",
       "Project 2"
@@ -113,9 +113,9 @@
   {
     "objectID": "Projects/project2.html#questiontask-1",
     "href": "Projects/project2.html#questiontask-1",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - [flight delay index]",
     "section": "QUESTION|TASK 1",
-    "text": "QUESTION|TASK 1\nCOPY PASTE QUESTION|TASK 1 FROM THE PROJECT HERE\ntype your results and analysis here\n\n\nRead and format data\n# Include and execute your code here\n\n\ninclude figures in chunks and discuss your findings in the figure.\n::: {#cell-Q1 chart .cell execution_count=4}\n\nplot example\n# Include and execute your code here\nchart = px.bar(df.head(200),\n    x=\"name\", \n    y=\"AK\"\n)\nchart.show()\n\n\n                                                \nMy useless chart\n\n:::\n::: {#cell-Q1 table .cell .tbl-cap-location-top tbl-cap=‘Not much of a table’ execution_count=5}\n\ntable example\n# Include and execute your code here\nmydat = df.head(1000)\\\n    .groupby('year')\\\n    .sum()\\\n    .reset_index()\\\n    .tail(10)\\\n    .filter([\"year\", \"AK\",\"AR\"])\n\ndisplay(mydat)\n\n\n\n\n\n\n\n\n\nyear\nAK\nAR\n\n\n\n\n96\n2006\n21.0\n183.0\n\n\n97\n2007\n28.0\n153.0\n\n\n98\n2008\n36.0\n212.0\n\n\n99\n2009\n34.0\n179.0\n\n\n100\n2010\n22.0\n196.0\n\n\n101\n2011\n41.0\n148.0\n\n\n102\n2012\n28.0\n140.0\n\n\n103\n2013\n26.0\n134.0\n\n\n104\n2014\n20.0\n114.0\n\n\n105\n2015\n28.0\n121.0\n\n\n\n\n\n\n:::",
+    "text": "QUESTION|TASK 1\nFix all of the varied missing data types in the data to be consistent (all missing values should be displayed as “NaN”)\nAll bad data in the set has been replaced by NaN. See below on line 2 of the table.\n\n\nRead and format data\n# Include and execute your code here\nclean_data = df.replace(-999, pd.NA).replace(\"n/a\", pd.NA).replace(\"\", pd.NA)\ndisplay(clean_data.head(3))\n\n\n\n\n\n\n\n\n\nairport_code\nairport_name\nmonth\nyear\nnum_of_flights_total\nnum_of_delays_carrier\nnum_of_delays_late_aircraft\nnum_of_delays_nas\nnum_of_delays_security\nnum_of_delays_weather\nnum_of_delays_total\nminutes_delayed_carrier\nminutes_delayed_late_aircraft\nminutes_delayed_nas\nminutes_delayed_security\nminutes_delayed_weather\nminutes_delayed_total\n\n\n\n\n0\nATL\nAtlanta, GA: Hartsfield-Jackson Atlanta Intern...\nJanuary\n2005.0\n35048\n1500+\n&lt;NA&gt;\n4598\n10\n448\n8355\n116423.0\n104415\n207467.0\n297\n36931\n465533\n\n\n1\nDEN\nDenver, CO: Denver International\nJanuary\n2005.0\n12687\n1041\n928\n935\n11\n233\n3153\n53537.0\n70301\n36817.0\n363\n21779\n182797\n\n\n2\nIAD\n&lt;NA&gt;\nJanuary\n2005.0\n12381\n414\n1058\n895\n4\n61\n2430\nNaN\n70919\n35660.0\n208\n4497\n134881",
     "crumbs": [
       "DS250 Projects",
       "Project 2"
@@ -124,9 +124,9 @@
   {
     "objectID": "Projects/project2.html#questiontask-2",
     "href": "Projects/project2.html#questiontask-2",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - [flight delay index]",
     "section": "QUESTION|TASK 2",
-    "text": "QUESTION|TASK 2\nCOPY PASTE QUESTION|TASK 2 FROM THE PROJECT HERE\ntype your results and analysis here\n\n\nRead and format data\n# Include and execute your code here\n\n\ninclude figures in chunks and discuss your findings in the figure.\n::: {#cell-Q2 chart .cell execution_count=7}\n\nplot example\n# Include and execute your code here\nchart = px.bar(df.head(200),\n    x=\"name\", \n    y=\"AK\"\n)\nchart.show()\n\n\n                                                \nMy useless chart\n\n:::\n::: {#cell-Q2 table .cell .tbl-cap-location-top tbl-cap=‘Not much of a table’ execution_count=8}\n\ntable example\n# Include and execute your code here\nmydat = df.head(1000)\\\n    .groupby('year')\\\n    .sum()\\\n    .reset_index()\\\n    .tail(10)\\\n    .filter([\"year\", \"AK\",\"AR\"])\n\ndisplay(mydat)\n\n\n\n\n\n\n\n\n\nyear\nAK\nAR\n\n\n\n\n96\n2006\n21.0\n183.0\n\n\n97\n2007\n28.0\n153.0\n\n\n98\n2008\n36.0\n212.0\n\n\n99\n2009\n34.0\n179.0\n\n\n100\n2010\n22.0\n196.0\n\n\n101\n2011\n41.0\n148.0\n\n\n102\n2012\n28.0\n140.0\n\n\n103\n2013\n26.0\n134.0\n\n\n104\n2014\n20.0\n114.0\n\n\n105\n2015\n28.0\n121.0\n\n\n\n\n\n\n:::",
+    "text": "QUESTION|TASK 2\nWhich airport has the worst delays?\nAs desplayed in the chart below and by hovering, you can find that the Atlanta, GA: Hartsfield-Jackson Atlanta International Airport has had the most time delayed as well as most delays.\n\nDelay time\nDelay time total .cell execution_count=4}\n\nShow the code\nchart = px.scatter(clean_data, title=\"Delay time\", y=\"minutes_delayed_total\", hover_data= \"airport_name\")\ndisplay(chart)\n\n\n                                                \n\n\n::: {#cell-Delay count .cell execution_count=5}\n\nDelay count by index\nchart = px.scatter(clean_data, title=\"Delay count\",y=\"num_of_delays_total\", hover_data= \"airport_name\")\ndisplay(chart)\n\n\n                                                \n\n:::\n::: {#cell-Delay count to time .cell execution_count=6}\n\nDelay count to delay time\nchart = px.scatter(clean_data, title=\"Delay count to time\", x=\"minutes_delayed_total\",y=\"num_of_delays_total\", hover_data= \"airport_name\")\ndisplay(chart)\n\n\n                                                \n\n:::",
     "crumbs": [
       "DS250 Projects",
       "Project 2"
@@ -135,9 +135,31 @@
   {
     "objectID": "Projects/project2.html#questiontask-3",
     "href": "Projects/project2.html#questiontask-3",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Client Report - [flight delay index]",
     "section": "QUESTION|TASK 3",
-    "text": "QUESTION|TASK 3\nCOPY PASTE QUESTION|TASK 3 FROM THE PROJECT HERE\ntype your results and analysis here\n\n\nRead and format data\n# Include and execute your code here\n\n\ninclude figures in chunks and discuss your findings in the figure.\n::: {#cell-Q3 chart .cell execution_count=10}\n\nplot example\n# Include and execute your code here\nchart = px.bar(df.head(200),\n    x=\"name\", \n    y=\"AK\"\n)\nchart.show()\n\n\n                                                \nMy useless chart\n\n:::\n::: {#cell-Q3 table .cell .tbl-cap-location-top tbl-cap=‘Not much of a table’ execution_count=11}\n\ntable example\n# Include and execute your code here\nmydat = df.head(1000)\\\n    .groupby('year')\\\n    .sum()\\\n    .reset_index()\\\n    .tail(10)\\\n    .filter([\"year\", \"AK\",\"AR\"])\n\ndisplay(mydat)\n\n\n\n\n\n\n\n\n\nyear\nAK\nAR\n\n\n\n\n96\n2006\n21.0\n183.0\n\n\n97\n2007\n28.0\n153.0\n\n\n98\n2008\n36.0\n212.0\n\n\n99\n2009\n34.0\n179.0\n\n\n100\n2010\n22.0\n196.0\n\n\n101\n2011\n41.0\n148.0\n\n\n102\n2012\n28.0\n140.0\n\n\n103\n2013\n26.0\n134.0\n\n\n104\n2014\n20.0\n114.0\n\n\n105\n2015\n28.0\n121.0\n\n\n\n\n\n\n:::",
+    "text": "QUESTION|TASK 3\nWhat is the best month to fly if you want to avoid delays of any length?\nAs you can see by the chart below, November is the best time to fly in terms of chance of delay.\n::: {#cell-Delays by month .cell execution_count=7}\n\ndelay count by month\nchart = px.bar(clean_data, title=\"Delay count by month\", x=\"month\", y=\"num_of_delays_total\")\ndisplay(chart)\n\n\n                                                \n\n:::\nThere are less than 200k delays in November, compared to the over 350k delays that occur in July",
+    "crumbs": [
+      "DS250 Projects",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Projects/project2.html#questiontask-4",
+    "href": "Projects/project2.html#questiontask-4",
+    "title": "Client Report - [flight delay index]",
+    "section": "QUESTION|TASK 4",
+    "text": "QUESTION|TASK 4\nYour job is to create a new column that calculates the total number of flights delayed by weather (both severe and mild).\ntype your results and analysis here\n\n\nShow the code\ndef month_check(month):\n    if pd.isna(month):\n        return 0.65  # Default value for missing months\n    elif month in [\"April\", \"August\"]:\n        return 0.4\n    else:\n        return 0.65\n#| code-summary: find the mean of delays\nlate_aircraft_mean = clean_data['num_of_delays_late_aircraft'].mean()\n#| code-summary: fill NaNs\nclean_data['num_of_delays_late_aircraft'].fillna(late_aircraft_mean, inplace=True)\n#| code-summary: creat the new column and do applied math\nclean_data[\"total_weather\"] = clean_data.apply(lambda row:((month_check(row[\"month\"]) * row[\"num_of_delays_nas\"]) + row[\"num_of_delays_weather\"] + (row[\"num_of_delays_late_aircraft\"] * 0.3)), axis=1)\n#| code-summary: round data to nearest integer \nclean_data['total_weather'] = clean_data['total_weather'].round().astype(int)\n#| code-summary: display first 5 entrees\ndisplay(clean_data.head(5))\n\n\n\n\n\n\n\n\n\nairport_code\nairport_name\nmonth\nyear\nnum_of_flights_total\nnum_of_delays_carrier\nnum_of_delays_late_aircraft\nnum_of_delays_nas\nnum_of_delays_security\nnum_of_delays_weather\nnum_of_delays_total\nminutes_delayed_carrier\nminutes_delayed_late_aircraft\nminutes_delayed_nas\nminutes_delayed_security\nminutes_delayed_weather\nminutes_delayed_total\ntotal_weather\n\n\n\n\n0\nATL\nAtlanta, GA: Hartsfield-Jackson Atlanta Intern...\nJanuary\n2005.0\n35048\n1500+\n1109.104072\n4598\n10\n448\n8355\n116423.0\n104415\n207467.0\n297\n36931\n465533\n3769\n\n\n1\nDEN\nDenver, CO: Denver International\nJanuary\n2005.0\n12687\n1041\n928.000000\n935\n11\n233\n3153\n53537.0\n70301\n36817.0\n363\n21779\n182797\n1119\n\n\n2\nIAD\n&lt;NA&gt;\nJanuary\n2005.0\n12381\n414\n1058.000000\n895\n4\n61\n2430\nNaN\n70919\n35660.0\n208\n4497\n134881\n960\n\n\n3\nORD\nChicago, IL: Chicago O'Hare International\nJanuary\n2005.0\n28194\n1197\n2255.000000\n5415\n5\n306\n9178\n88691.0\n160811\n364382.0\n151\n24859\n638894\n4502\n\n\n4\nSAN\nSan Diego, CA: San Diego International\nJanuary\n2005.0\n7283\n572\n680.000000\n638\n7\n56\n1952\n27436.0\n38445\n21127.0\n218\n4326\n91552\n675",
+    "crumbs": [
+      "DS250 Projects",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Projects/project2.html#questiontask-5",
+    "href": "Projects/project2.html#questiontask-5",
+    "title": "Client Report - [flight delay index]",
+    "section": "QUESTION|TASK 5",
+    "text": "QUESTION|TASK 5\nUsing the new weather variable calculated above, create a barplot showing the proportion of all flights that are delayed by weather at each airport. Discuss what you learn from this graph.\nAlthough the client requested a bargraph, I also included a scatter plot because of better readability. The airport with the most weather based delay would be the San Francisco, CA: San Francisco International Airport at 51.56% of delays being weather related. The airport with the least weather based delays would be the Salt Lake City, UT: Salt Lake City Airport at 20.56% of delays being weather related.\n\n\nRead and format data\n# Include and execute your code here\nchart = px.bar(clean_data, title=\"Weather Delay % of all delays\",y=clean_data[\"total_weather\"].astype(int) / clean_data[\"num_of_delays_total\"].astype(int), hover_data= \"airport_name\")\ndisplay(chart)\nchart2 = px.scatter(clean_data, title=\"Weather Delay % of all delays\",y=clean_data[\"total_weather\"].astype(int) / clean_data[\"num_of_delays_total\"].astype(int), hover_data= \"airport_name\")\ndisplay(chart2)",
     "crumbs": [
       "DS250 Projects",
       "Project 2"
